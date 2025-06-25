@@ -1,4 +1,5 @@
 # 의사 코드
+
 ```
 Algorithm avl_del(root, key)
 
@@ -52,6 +53,7 @@ Algorithm avl_del(root, key)
 }
 return rebalance(root);
 ```
+
 ---
 
 
