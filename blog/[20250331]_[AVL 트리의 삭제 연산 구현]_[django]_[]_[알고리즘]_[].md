@@ -5,11 +5,17 @@ Algorithm avl_del(root, key)
 만약 노드가 본인 하나밖에 없으면 return;
 
 // 삭제할 key에 해당하는 노드 찾는 과정
+
 삭제할 key가 root의 값보다 작으면 {
+
   root의 왼쪽 자식이 존재하면 {
+
       root의 왼쪽 자식 = avl_del(root의 왼쪽 자식, key);
+
       // 왼쪽 자식노드에 대해서 삭제연산 수행(재귀호출)
+
    }
+   
 }
 
 삭제할 key가 root의 값보다 크면 {
