@@ -1,7 +1,7 @@
 # 의사 코드
-
+```
 Algorithm avl_del(root, key)
-***
+
 만약 노드가 본인 하나밖에 없으면 return;
 
 // 삭제할 key에 해당하는 노드 찾는 과정
@@ -15,7 +15,7 @@ Algorithm avl_del(root, key)
       // 왼쪽 자식노드에 대해서 삭제연산 수행(재귀호출)
 
    }
-   
+
 }
 
 삭제할 key가 root의 값보다 크면 {
@@ -51,7 +51,7 @@ Algorithm avl_del(root, key)
       // 이동한 노드의 오른쪽 자식에 대해서 삭제 연산 수행(재귀호출) }
 }
 return rebalance(root);
-***
+```
 ---
 
 
