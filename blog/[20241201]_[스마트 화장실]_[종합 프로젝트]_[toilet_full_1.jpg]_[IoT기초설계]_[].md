@@ -27,7 +27,7 @@
 → pygame 라이브러리 사용해서 음악 재생, 버튼 누르면 부저 소리와 함께 뚜껑이 닫힘
 ![구현 내용 4](/img/smart_toilet/act_4.jpg)
 
-# 작동 영상
+# 작동 영상 (유튜브 링크)
 [![유튜브 링크](http://i.ytimg.com/vi/Zl0-rDz1aHA/maxresdefault.jpg)](https://youtu.be/Zl0-rDz1aHA)
 
 # 코드 - 아두이노
