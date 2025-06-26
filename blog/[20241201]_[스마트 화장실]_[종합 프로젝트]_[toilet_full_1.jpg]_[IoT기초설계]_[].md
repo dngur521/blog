@@ -4,28 +4,28 @@
 - 온습도센서, LED, LCD, 릴레이(Fan) → 라즈베리파이
 - 시리얼 통신으로 아두이노와 라즈베리파이가 텍스트로 통신
 - 각 센서 값들에 따라 각종 액추에이터들이 동작
-<img src="/img/smart_toilet/toilet_full_1.jpg", height="100x", width="100px">
-![전체샷2](/img/smart_toilet/toilet_full_2.jpg)
-![전체샷3](/img/smart_toilet/toilet_full_3.jpg)
+![전체샷1](/img/toilet_full_1.jpg)
+![전체샷2](/img/toilet_full_2.jpg)
+![전체샷3](/img/toilet_full_3.jpg)
 
 
 # 구현 내용
 화장실 내부의 사람 감지 (초음파 센서 사용)
 → 사람 들어오면 전등(LED) 및 릴레이(Fan) 동작
-![구현 내용 1](/img/smart_toilet/act_1.jpg)
+![구현 내용 1](/img/toilet_act_1.jpg)
 
 화장실 외부에 LCD 패널로 변기칸 사용 유무 및 온습도 체크
 → 실시간으로 업데이트 됨
-![구현 내용 2](/img/smart_toilet/act_2.jpg)
+![구현 내용 2](/img/toilet_act_2.jpg)
 
 현재 온습도에 따라 환풍기 자동 스위칭 (릴레이 및 온습도 센서)
 → 특정 온습도 이상이면 사람 유무에 관계없이 항상 환풍기 켜짐
-![구현 내용 3](/img/smart_toilet/act_3.jpg)
+![구현 내용 3](/img/toilet_act_3.jpg)
 
 변기 칸 사람 감지 및 사용 중 음악 재생 (초음파 센서)
 변기 사용 이후 자동 뚜껑 닫기 및 물 내리기 (버튼 및 서보모터)
 → pygame 라이브러리 사용해서 음악 재생, 버튼 누르면 부저 소리와 함께 뚜껑이 닫힘
-![구현 내용 4](/img/smart_toilet/act_4.jpg)
+![구현 내용 4](/img/toilet_act_4.jpg)
 
 # 작동 영상 (유튜브 링크)
 [![유튜브 링크](http://i.ytimg.com/vi/Zl0-rDz1aHA/maxresdefault.jpg)](https://youtu.be/Zl0-rDz1aHA)
