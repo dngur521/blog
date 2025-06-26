@@ -4,7 +4,7 @@
 - 온습도센서, LED, LCD, 릴레이(Fan) → 라즈베리파이
 - 시리얼 통신으로 아두이노와 라즈베리파이가 텍스트로 통신
 - 각 센서 값들에 따라 각종 액추에이터들이 동작
-![전체샷1](<img src="/img/smart_toilet/toilet_full_1.jpg", height="100x", width="100px">)
+<img src="/img/smart_toilet/toilet_full_1.jpg", height="100x", width="100px">
 ![전체샷2](/img/smart_toilet/toilet_full_2.jpg)
 ![전체샷3](/img/smart_toilet/toilet_full_3.jpg)
 
