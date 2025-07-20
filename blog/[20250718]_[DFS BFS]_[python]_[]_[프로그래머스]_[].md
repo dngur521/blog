@@ -58,6 +58,58 @@ def solution(n, computers):
 # 게임 맵 최단거리
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1844)
 ```python
+def solution(maps):
+
+    queue = []
+    n = len(maps)     # 행 (row)
+    m = len(maps[0])  # 열 (col)
+    dest = (n-1, m-1) # 목적지 좌표
+
+    # 동, 서, 남, 북 방향 (행, 열 변화량)
+    dx = [1, -1, 0, 0]  # 행(row) 변화량
+    dy = [0, 0, 1, -1]  # 열(col) 변화량
+
+    # 방문 여부를 저장할 2차워 배열 초기화
+    visited = []
+    for i in range(n):
+        row = []
+        for j in range(m):
+            row.append(False)
+        visited.append(row)
+    
+    # 시작 위치는 방문 처리 -> True
+    visited[0][0] = True
+    
+    # 큐에 시작 위치와 거리 정보 추가 
+    queue.append([0, 0, 1]) # (x, y, 거리)
+
+    # 큐가 빌 때까지 반복 (BFS)
+    while queue:
+        x, y, dist = queue.pop(0) # 큐에서 pop하기
+
+        # 만약 현재 좌표가 목적지 좌표랑 같다면 거리값 return
+        if (x, y) == dest:
+            return dist
+
+        # 현재 위치에서 상하좌우 4방향으로 이동
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            # 맵 범위를 벗어나지 않았으면
+            if 0 <= nx < n and 0 <= ny < m:
+                # 벽이 아니고 (maps[nx][ny] == 1)
+                # 아직 방문하지 않았으면
+                if maps[nx][ny] == 1 and not visited[nx][ny]:
+                    # 방문 표시, 큐에 (nx, ny, dist + 1) 추가
+                    visited[nx][ny] = True
+                    queue.append((nx, ny, dist + 1))
+
+    # 목적지에 도달하지 못하는 경우 -1 return
+    return -1
+
+# print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]))
+# print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]))
 
 ```
 
