@@ -113,10 +113,53 @@ def solution(maps):
 
 ```
 
-# 단어 변
+# 단어 변환
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/43163)
 ```python
+# 두 단어에서 한 글자만 다를 때 True 반환하는 함수
+def is_one_diff(word1, word2):
+    word1_list = list(word1)
+    word2_list = list(word2)
+    diff = 0
 
+    for i in range(len(word1_list)):
+        if word1_list[i] != word2_list[i]:
+            diff += 1
+        if diff > 1:
+            return False
+    return True 
+
+def solution(begin, target, words):
+
+    # target이 words에 없으면 변환 불가능 -> 0 반환
+    if target not in words:
+        return 0
+
+    # BFS 탐색 준비: 방문 여부 리스트와 큐 초기화
+    visited = [False] * len(words)
+    queue = [(begin, 0)] # (현재 단어, 변환 횟수)
+    count = 0
+
+    while queue:
+        # 큐에서 현재 단어와 변환 횟수 꺼내기
+        cur_word, count = queue.pop(0)
+
+        # words 목록 중 아직 방문하지 않았고, 
+        # 현재 단어와 한 글자만 다른 단어들 모두 찿기 (is_one_diff 함수 사용)
+        for i, word in enumerate(words):
+            if not visited[i] and is_one_diff(cur_word, word):
+                # 그 단어가 target이면 count + 1 반환
+                if word == target:
+                    return count + 1
+                # 그 단어가 target이 아니면 방문 표시하고 큐에 다시 넣기
+                visited[i] = True
+                queue.append((word, count + 1))
+        
+    # 큐가 비었는데도 target에 도달하지 못하면 0 반환
+    return 0
+
+# print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+# print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"]))
 ```
 
 # 아이템 줍기
