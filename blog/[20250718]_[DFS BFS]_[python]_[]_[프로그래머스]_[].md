@@ -69,7 +69,7 @@ def solution(maps):
     dx = [1, -1, 0, 0]  # 행(row) 변화량
     dy = [0, 0, 1, -1]  # 열(col) 변화량
 
-    # 방문 여부를 저장할 2차워 배열 초기화
+    # 방문 여부를 저장할 2차원 배열 초기화
     visited = []
     for i in range(n):
         row = []
