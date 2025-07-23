@@ -171,7 +171,34 @@ def solution(begin, target, words):
 # 여행 경로 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/43164)
 ```python
+from collections import defaultdict
+import heapq
 
+def solution(tickets):
+    # 공항 간 이동을 딕셔너리 형태의 그래프로 만들기
+    # 도착 공항 리스트는 알파벳 순으로 정렬 (heapq 사용)
+    graph = defaultdict(list)
+    for src, dst in tickets:
+        heapq.heappush(graph[src], dst)
+
+    answer = []
+
+    def dfs(curr):
+        # 현재 공항에서 출발하는 모든 티켓을 다 쓸때까지 반복
+        while graph[curr]:
+            # 알파벳순으로 가장 빠른(다음) 목적지를 선택
+            next = heapq.heappop(graph[curr])
+            dfs(next)
+        # 더 이상 갈 곳이 없으면 경로에 추가 (역순으로 삽입됨)
+        answer.append(curr)
+    # 항상 "ICN" 공항에서 시작
+    dfs("ICN")
+
+    # 역순이므로 거꾸로 반환
+    return answer[::-1]
+
+# print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]))
+# print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]))
 ```
 
 # 퍼즐 조각 채우기
