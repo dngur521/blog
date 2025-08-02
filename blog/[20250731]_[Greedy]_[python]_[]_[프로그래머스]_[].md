@@ -52,7 +52,7 @@ def solution(name):
         # 왼쪽으로 갔다가 오른쪽으로 돌아오는 경우도 같이 고려 (대칭)
         moves = (n - next_char) * 2 + char
         leftright_moves = min(leftright_moves, moves)
-
+    # 전체 횟수 = 위/아래 조작 횟수 + 좌/우 조작 횟수
     answer = updown_moves + leftright_moves
     return answer
 
