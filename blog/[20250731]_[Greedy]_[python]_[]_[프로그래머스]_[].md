@@ -32,7 +32,7 @@ def solution(name):
     for char in name:
         updown_moves += min(ord(char) - ord('A'), ord('Z') - ord(char) + 1)
 
-    # 2. 좌/우 조작 횟수 
+    # 2. 좌/우 조작 횟수 중 더 짧은 거리 선택
     n = len(name)
     leftright_moves = n - 1 # 오른쪽으로만 이동하는 경우의 좌/우 조작 수
 
