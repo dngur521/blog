@@ -64,6 +64,30 @@ def solution(name):
 # 큰 수 만들기
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42883)
 ```python
+def solution(number, k):
+    # 문자열 number를 정수 리스트로 변환
+    num_arr = [int(n) for n in number]
+    stack = []
+
+    # 숫자를 앞에서부터 하나씩 탐색
+    for digit in num_arr:
+        # 스택의 마지막 숫자보다 현재 숫자가 크면 pop()으로 제거 (k번 까지만 가능)
+        while k > 0 and stack and stack[-1] < digit:
+            stack.pop()
+            k -= 1 # k = k - 1
+        stack.append(digit) # 현재 숫자를 스택에 추가
+
+    # 만약 아직 제거하지 못한 k가 남아 있다면, 스택의 뒤에서 그만큼 제거
+    if k > 0: 
+        stack = stack[:-k]
+
+    # 정수 리스트를 문자열로 변환하여 반환
+    answer = ''.join(map(str, stack))
+    return answer
+
+# print(solution("1924", 2))
+# print(solution("1231234", 3))
+# print(solution("4177252841", 4))
 
 ```
 
