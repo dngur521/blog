@@ -94,6 +94,31 @@ def solution(number, k):
 # 구명보트
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42885)
 ```python
+def solution(people, limit):
+    people.sort() # 몸무게 오름차순 정렬
+    # 양쪽 끝을 가리키는 두 포인터 사용 
+    # (left: 가장 가벼운 사람, right: 가장 무거운 사람)
+    left = 0
+    right = len(people) - 1
+    boats = 0
+    # 두 포인터의 위치가 교차되면 종료
+    while left <= right:
+        # 만약 가벼운 사람과 무거운 사람의 몸무게의 합이 limit 이하면 둘 다 태움
+        # → 포인터 둘 다 이동
+        if people[left] + people[right] <= limit:
+            left += 1
+            right -= 1
+        # 두 사람의 합이 limit 초과하면 무거운 사람만 태움
+        # → right 포인터만 이동
+        else:
+            right -= 1
+        # 한 번 진행할 때 마다 보트 하나 사용
+        boats += 1
+    return boats
+
+# print(solution([70, 50, 80, 50], 100))
+# print(solution([70, 80, 50], 100))
+
 
 ```
 
