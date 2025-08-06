@@ -100,7 +100,7 @@ def solution(people, limit):
     # (left: 가장 가벼운 사람, right: 가장 무거운 사람)
     left = 0
     right = len(people) - 1
-    boats = 0
+    answer = 0
     # 두 포인터의 위치가 교차되면 종료
     while left <= right:
         # 만약 가벼운 사람과 무거운 사람의 몸무게의 합이 limit 이하면 둘 다 태움
@@ -113,8 +113,8 @@ def solution(people, limit):
         else:
             right -= 1
         # 한 번 진행할 때 마다 보트 하나 사용
-        boats += 1
-    return boats
+        answer += 1
+    return answer
 
 # print(solution([70, 50, 80, 50], 100))
 # print(solution([70, 80, 50], 100))
