@@ -27,7 +27,7 @@ def solution(n, lost, reserve):
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42860)
 ```python
 def solution(name):
-    # 1. 위/아래 조작 횟수 중 더 짧은 거리 선택 (char - A, Z - char의 유니코드 값 차이)
+    # 1. 위/아래 조작 횟수 중 더 짧은 거리 선택 (char ~ A, Z ~ char의 유니코드 값 차이)
     updown_moves = 0
     for char in name:
         updown_moves += min(ord(char) - ord('A'), ord('Z') - ord(char) + 1)
