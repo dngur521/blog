@@ -125,7 +125,54 @@ def solution(people, limit):
 # 섬 연결하기
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42861)
 ```python
+# 부모 노드(대표 노드) 찾는 함수
+def find(parent, x):
+    if parent[x] != x:
+        # 경로 압축
+        # (찾는 도중 만나는 노드들도 직접 부모와 연결시키기)
+        parent[x] = find(parent, parent[x])
+    return parent[x]
 
+# 두 노드를 합치는 함수
+def union(parent, a, b):
+    root_a = find(parent, a)
+    root_b = find(parent, b)
+    if root_a != root_b:
+        # 한 쪽 루트를 다른 쪽 루트에 붙이기
+        parent[root_b] = root_a 
+
+def solution(n, costs):
+    # 간선을 비용 기준으로 오름차순 정렬
+    costs.sort(key=lambda x: x[2])
+
+    # 초기 부모 설정 
+    # 초기에는 모든 섬이 자기 자신을 부모로 가짐
+    parent = []
+    for i in range(n):
+        parent.append(i)
+
+    answer = 0     # 최종 최소 비용
+    edges_used = 0 # 현재까지 선택한 간선(다리)의 갯수
+
+    for a, b, cost in costs:
+        # 각 노드의 root 찾기
+        # (두 섬의 대표 부모 노드 찾기)
+        root_a = find(parent, a)
+        root_b = find(parent, b)
+
+        # 각 노드의 root가 다르면
+        # (== 서로 다른 집합이면) 두 노드를 연결하고,
+        if root_a != root_b:
+            union(parent, a, b)
+            # 비용 및 선택한 간선 갯수 추가
+            answer += cost  
+            edges_used += 1
+
+            # 모든 섬이 연결된 경우 더 이상 진행할 필요가 없으므로 for문 탈출
+            if edges_used == n-1:
+                break
+
+    return answer
 ```
 
 # 단속카메라
