@@ -178,5 +178,29 @@ def solution(n, costs):
 # 단속카메라
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42884)
 ```python
+def solution(routes):  
+    answer = 0
+    #  a > b 인 경우 큰 값이 뒤에 오게 하기
+    routes = [(min(a, b), max(a, b)) for a, b in routes]
+
+    # 각 차랑의 경로를 진출 지점 기준으로 오름차순 정렬
+    routes.sort(key=lambda x:x[1])
+
+    # 제일 먼저 끝나는 구간의 끝 지점에 카메라를 두기
+    # (for문에서 초기화 할 수 있으니 마이너스 무한대로 먼저 초기화)
+    cam_now = -float('inf')
+
+    # 이후 순서대로 보면서 
+    # 현재 카메라 위치가 다음 구간의 진입 지점보다 작으면
+    # == 그 구간을 못 찍으면
+    # 그 구간의 진출 지점에 새 카메라 두기
+    for start, end in routes:
+        if cam_now < start:
+            cam_now = end
+            answer += 1
+    
+    return answer
+
+# print(solution([[-20,-15], [-14,-5], [-18,-13], [-5,-3]]))
 
 ```
