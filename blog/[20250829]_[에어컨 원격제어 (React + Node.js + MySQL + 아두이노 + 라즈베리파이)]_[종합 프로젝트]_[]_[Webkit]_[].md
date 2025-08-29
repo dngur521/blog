@@ -134,7 +134,7 @@ const unsigned long codes[] = {
 void setup() {
   Serial.begin(9600); 
   Serial.println("아두이노가 준비되었습니다. 'SEND <숫자1>,<숫자2>'를 입력하세요.");
-  Serial.println("예: SEND 1,2 (냉방 약풍 18도 신호를 2번 반복)");
+  Serial.println("예: SEND 0,2 (냉방 약풍 18도 신호를 2번 반복)");
 }
 
 void loop() {
@@ -187,7 +187,7 @@ void loop() {
 
 <details>
   <summary>- 라즈베리파이</summary>
-  
+
 ```python
 import serial
 import time
@@ -220,7 +220,7 @@ if __name__ == "__main__":
         print(f"Connected to Arduino on {SERIAL_PORT}")
         while True:
             # 'SEND 1,2' 명령어 전송 (냉방. 약풍, 18도 신호를 2번 반복)
-            send_command(ser, 'SEND 1,2')
+            send_command(ser, 'SEND 0,2')
             time.sleep(3)
             send_command(ser, 'SEND 50,2') # 제습. 약풍, 18도 신호를 2번 반복
             time.sleep(3)
