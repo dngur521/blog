@@ -8,7 +8,9 @@
 [![유튜브 링크](http://i.ytimg.com/vi/BpOoKStL1qM/maxresdefault.jpg)](https://youtu.be/BpOoKStL1qM?si=jRJ2ZUoAFz-E9UFn)
 
 # 1일차 코드
-- 아두이노
+<details>
+  <summary>- 아두이노</summary>
+
 ```C
 #include <IRremote.h>
 #include <IRremoteInt.h> 
@@ -181,7 +183,11 @@ void loop() {
   }
 }
 ```
+</details>
 
+<details>
+  <summary>- 라즈베리파이</summary>
+  
 ```python
 import serial
 import time
@@ -227,3 +233,5 @@ if __name__ == "__main__":
             ser.close()
             print("Serial port closed.")
 ```
+
+</details>
