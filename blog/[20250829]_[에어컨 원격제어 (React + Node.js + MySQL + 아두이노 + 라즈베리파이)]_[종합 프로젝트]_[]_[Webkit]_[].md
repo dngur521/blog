@@ -1,3 +1,6 @@
+# 진행중인 코드
+[GitHub 링크](https://github.com/dngur521/Webkit_Project1)
+
 # 1일차
 - 아두이노에 IR 송수신 모듈 달아서 에어컨 리모컨의 값 확인해서 저장
 - 아두이노 시리얼에 ```SEND 1,2``` 이런식으로 처음 값은 에어컨 모드 종류, 두번째 값은 보내는 반복 횟수로 전송하면 그에 맞는 동작 수행
@@ -245,5 +248,8 @@ if __name__ == "__main__":
 - 나중에 React에서 History 보는 기능 추가 예정
 ![실행화면1](https://i.ibb.co/YFnWq0xQ/2025-08-31-231933.png)
 ![실행화면2](https://i.ibb.co/Ld9tp6yk/2025-08-31-231937.png)
-
+# 2일차 작동영상(사진 클릭하면 유튜브로 이동함)
 [![유튜브 링크](http://i.ytimg.com/vi/N_m-jxU_BFM/maxresdefault.jpg)](https://youtu.be/N_m-jxU_BFM?si=dDMILu6Gl6r_tCkq)
+
+# 진행중인 코드
+[GitHub 링크](https://github.com/dngur521/Webkit_Project1)
