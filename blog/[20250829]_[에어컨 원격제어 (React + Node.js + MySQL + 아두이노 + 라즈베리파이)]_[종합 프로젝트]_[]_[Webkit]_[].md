@@ -235,3 +235,15 @@ if __name__ == "__main__":
 ```
 
 </details>
+
+# 2일차
+- 라즈베리파이와 아두이노는 1일차때와 같이 시리얼 통신으로 진행
+- React + Node.js로 라즈베리파이와 통신하여 에어컨 제어 및 온습도 값 보여주기 수행
+- 라즈베리파이와 Node.js는 http로 통신
+- 에어컨 제어할때 마다 라즈베리파이의 데이터베이스에 History 저장
+- 온도도 1분마다 데이터베이스에 저장 준비 완료 (현 시점에서는 센서가 고장나있어서 테스트로 몇개만 해봄)
+- 나중에 React에서 History 보는 기능 추가 예정
+![실행화면1](https://i.ibb.co/YFnWq0xQ/2025-08-31-231933.png)
+![실행화면2](https://i.ibb.co/Ld9tp6yk/2025-08-31-231937.png)
+
+[![유튜브 링크](http://i.ytimg.com/vi/N_m-jxU_BFM/maxresdefault.jpg)](https://youtu.be/N_m-jxU_BFM?si=dDMILu6Gl6r_tCkq)
