@@ -261,5 +261,11 @@ if __name__ == "__main__":
 # 3일차 작동영상(사진 클릭하면 유튜브로 이동함)
 [![유튜브 링크](http://i.ytimg.com/vi/mXKveSXlRyc/maxresdefault.jpg)](https://youtu.be/mXKveSXlRyc?si=w5Qm4YQcjzajRAI9)
 
-# 진행중인 코드
+# 4일차 (최종)
+- 정상적인 온습도 센서로 교체 이후 1분마다 데이터베이스에 온습도 저장하는 기능 활성화
+- 최종 마무리
+# 작동영상(사진 클릭하면 유튜브로 이동함)
+[![유튜브 링크](http://i.ytimg.com/vi/RpuEKJlPqEQ/maxresdefault.jpg)](https://youtu.be/RpuEKJlPqEQ?si=5qlImw2dkth6C8rm)
+
+# 코드
 [GitHub 링크](https://github.com/dngur521/Webkit_Project1)
