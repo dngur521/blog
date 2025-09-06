@@ -22,10 +22,28 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 21425. +=
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AZD8K_UayDoDFAVs&categoryId=AZD8K_UayDoDFAVs&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
 ```python
+def swap(x, y):
+    return y, x
 
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    A, B, N = map(int, input().split())
+    answer = 0
+    while True:
+        # 문제를 편하게 풀기 위해서 항상 작은 값이 앞에 오도록 합니다.
+        if A > B:
+            A, B = swap(A, B)
+        # 주어진 연산을 수행 후, 연산 횟수(answer)를 1 증가합니다.
+        A += B
+        answer += 1
+        # A에 저장된 값이 N 초과라면 반복문을 멈춥니다.
+        if A > N:
+            break
+    print(answer)
 
 ```
 
