@@ -47,10 +47,54 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 5185. [파이썬 S/W 문제해결 구현] 1일차 - 이진수
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTtiyIqd_wDFAVT&categoryId=AWTtiyIqd_wDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    N, num = map(str, input().split())
 
+    # 받은 문자열을 분석하기 쉽게 하기 위해 list로 변경
+    num_list = list(num)
+    # 10진수로 변경하기 위한 변수 초기화
+    num_dec = 0
+    # 자승을 위한 변수
+    i = 1
+
+    # 16진수를 10진수로 바꾸는 코드
+    for n in num_list:
+        if n in 'ABCDEF':
+            if n == 'A':
+                n = '10'
+            if n == 'B':
+                n = '11'
+            if n == 'C':
+                n = '12'
+            if n == 'D':
+                n = '13'
+            if n == 'E':
+                n = '14'
+            if n == 'F':
+                n = '15'
+        num_dec += int(n) * (16 ** (len(num) - i))
+        i += 1
+    
+    # 10진수 -> 2진수로 바꾸기
+    # 앞에 0b 글자 지우기 위해 slicing 진행 [2:]
+    answer = (bin(num_dec))[2:]
+
+    # 2진수의 앞에 '0'을 채우기 위한 과정
+    remainder = len(answer) % 4
+    prefix = ''
+    if remainder != 0:
+        for i in range(4 - remainder):
+            prefix += '0'
+    
+    # 최종 답 생성
+    answer = prefix + answer
+
+    print(f"#{test_case} {answer}")
 
 ```
 
