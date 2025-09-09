@@ -98,6 +98,40 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 5176. [파이썬 S/W 문제해결 기본] 8일차 - 이진탐색
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTa0jjq4ggDFAVT&categoryId=AWTa0jjq4ggDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    N = int(input())
+
+    tree = [0] * (N + 1) # 1번부터 N번 노드까지 저장할 트리 초기화
+
+    num = 1 # 채워 넣을 숫자 변수
+    
+    def inorder(node):
+        global num
+        if node > N:
+            return
+    
+        # 왼쪽 방문
+        inorder(node * 2)
+        # 현재 노드에 값 채우기
+        tree[node] = num
+        num += 1
+        # 오른쪽 방문
+        inorder(node * 2 + 1)
+
+    inorder(1) # 루트부터 중위순회 시작
+
+    answer  = tree[1]
+    answer2 = tree[N // 2]
+
+    print(f"#{test_case} {answer} {answer2}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
