@@ -154,10 +154,36 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 4834. [파이썬 S/W 문제해결 기본] 1일차 - 숫자 카드
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTLVouKpUgDFAVT&categoryId=AWTLVouKpUgDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=3)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    n = int(input())
+    nums = input()
+    
+    # 각 숫자의 갯수를 저장할 딕셔너리 생성
+    card_count = {}
 
+    # 각 숫자마다 순회
+    for i in range(n):
+        # 현재 숫자가 딕셔너리의 key로 이미 존재한다면
+        if(nums[i] in card_count):
+            # 그 숫자(key)의 값을 1 증가
+            card_count[nums[i]] += 1
+        # 현재 숫자가 딕셔너리의 key로 아직 존재하지 않는다면
+        else:
+            # 새로운 key - value 쌍을 딕셔너리에 추가(초기화)
+            card_count[nums[i]] = 1
+    
+    # max() 함수와 lambda식 활용해서 
+    # 가장 많은 카드의 숫자(key)와 장 수(value) 얻기
+    max_item = max(card_count.items(), key=lambda item: (item[1], item[0]))
+    answer1 = max_item[0]
+    answer2 = max_item[1]
+
+    print(f"#{test_case} {answer1} {answer2}")
 
 ```
 
