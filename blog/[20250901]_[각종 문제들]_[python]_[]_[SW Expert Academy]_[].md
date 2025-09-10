@@ -132,6 +132,28 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4828. [파이썬 S/W 문제해결 기본] 1일차 - min max
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTLQZwKon4DFAVT&categoryId=AWTLQZwKon4DFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=3)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    n = int(input())
+    list = input().split()
+
+    # 숫자들을 list로 입력받은 후 int로 형변환
+    N = [int(item) for item in list]
+
+    # 오름차순으로 정렬
+    N.sort()
+
+    # 가장 큰 수와 가장 작은 수의 차이 구하기
+    answer = N[-1] - N[0]
+
+    print(f"#{test_case} {answer}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
