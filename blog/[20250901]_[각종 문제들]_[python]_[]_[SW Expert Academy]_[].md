@@ -224,6 +224,39 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4836. [파이썬 S/W 문제해결 기본] 2일차 - 색칠하기
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTLZMRKpsYDFAVT&categoryId=AWTLZMRKpsYDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=3&&&&&&&&&&)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    # 10 * 10 격자 초기화
+    grid = [[0]*10 for _ in range(10)]
+
+    # N: 칠할 영역의 갯수
+    N = int(input())
+    for _ in range(N):
+        answer = 0
+        # r1, c1: 왼쪽 위 모서리 인덱스, r2, c2: 오른쪽 아래 모서리, 
+        # color: 색상 정보(1: 빨강, 2: 파랑)
+        r1, c1, r2, c2, color = map(int, input().split())
+        
+        # 각 영역마다 주어진 색으로 칠하기(누적합)
+        for i in range(r1, r2 + 1):
+            for j in range(c1, c2 + 1):
+                grid[i][j] += color
+        
+        # 10 * 10 격자를 전부 순회하면서 
+        # 영역의 값이 3(1+2;보라색)인 부분 체크
+        for i in range(10):
+            for j in range(10):
+                if grid[i][j] == 3:
+                    answer += 1
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
