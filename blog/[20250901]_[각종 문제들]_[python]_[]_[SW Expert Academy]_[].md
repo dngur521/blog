@@ -257,10 +257,44 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 4839. [파이썬 S/W 문제해결 기본] 2일차 - 이진탐색
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTLcyA6qAMDFAVT&categoryId=AWTLcyA6qAMDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
 
+    p, p_a, p_b = map(int, input().split())
+    l_a, l_b = 1, 1
+    r_a, r_b = p, p
+    c_a, c_b = 0, 0
+    count_a, count_b = 0, 0
+    
+    while (c_a != p_a):
+        c_a = int((l_a + r_a) // 2)
+        if c_a < p_a:
+            l_a = c_a
+        elif c_a > p_a:
+            r_a = c_a
+        count_a += 1
+
+    while (c_b != p_b):
+        c_b = int((l_b + r_b) // 2)
+        if c_b < p_b:
+            l_b = c_b
+        elif c_b > p_b:
+            r_b = c_b
+        count_b += 1
+
+    if count_a < count_b:
+        answer = "A"
+    elif count_a > count_b:
+        answer = "B"
+    else:
+        answer = "0"
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
 
 ```
 
