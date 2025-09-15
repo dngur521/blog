@@ -298,6 +298,64 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4861. [파이썬 S/W 문제해결 기본] 3일차 - 회문
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQQXcKQHkDFAVT&categoryId=AWTQQXcKQHkDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    N, M = map(int, input().split())
+    board = []
+    answer = ""
+    for _ in range(N):
+        board.append(input())
+
+    # 가로방향 회문 검사
+    for row in range(N):
+        # 0 ~ M, 1 ~ M + 1, ... 식으로 부분 인덱스 구해서 문자열 추출
+        for start in range(N - M + 1):
+            sub_str = board[row][start : start + M]
+
+            # 회문 검사
+            # [::-1]는 list 슬라이싱을 통해 문자열을 뒤집는것
+            if sub_str == sub_str[::-1]:
+                answer = sub_str
+                break
+        if answer:
+            break
+        # 답이 나왔을 경우 더 이상 탐색하지 않고 바로 종료
+
+    # 세로방향 회문 검사 (가로방향에서 찾지 못한 경우)
+    if not answer:
+        for col in range(N):
+            # 하나의 세로줄을 문자열로 만들기
+            col_str = ""
+            for row in range(N):
+                col_str += board[row][col]
+            
+            # 만들어진 세로줄에서 부분 문자열 추출
+            for start in range(N - M + 1):
+                sub_str = col_str[start : start + M]
+                
+                # 회문 검사
+                if sub_str == sub_str[::-1]:
+                    answer = sub_str
+                    break
+            if answer:
+                break
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
+# (문제 템플릿)
+[문제 링크]()
+```python
+
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
