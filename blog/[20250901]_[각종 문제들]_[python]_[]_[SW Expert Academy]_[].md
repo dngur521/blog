@@ -375,10 +375,32 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 4865. [파이썬 S/W 문제해결 기본] 3일차 - 글자수
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQSs6qQL0DFAVT&categoryId=AWTQSs6qQL0DFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    
+    # 각각의 문자열을 입력받기
+    str1 = input()
+    str2 = input()
+    # str1의 각 문자를 key로 가지고 값이 0인 딕셔너리 초기화
+    str1_dict = {char: 0 for char in str1}
+    answer = 0
 
+    # 딕셔너리의 각 키 값과 str2의 각 문자르르 비교
+    for key in str1_dict:
+        for char in str2:
+            # 키와 문자가 같으면 그 키의 value 1 증가
+            if key == char:
+                str1_dict[key] += 1
+
+    # 딕셔너리의 value 값 중에서 최대값 뽑아내기
+    answer = max(list(str1_dict.values()))
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
 
 ```
 
