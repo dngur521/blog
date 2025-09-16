@@ -349,6 +349,32 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4864. [파이썬 S/W 문제해결 기본] 3일차 - 문자열 비교
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQRytKQJ0DFAVT&categoryId=AWTQRytKQJ0DFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2&&&&&&&&&&)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    
+    # 각각의 문자열을 입력받고, 각 문자열의 길이 저장
+    str1 = input()
+    str2 = input()
+    str1_len = len(str1)
+    str2_len = len(str2)
+
+    answer = 0
+
+    # 윈도우 슬라이딩 기법으로 str2의 부분 문자열과 str1 비교
+    for i in range(str2_len - str1_len + 1):
+        if str2[i : i + str1_len] == str1:
+            # 부분 문자열이 같으면 answer는 1
+            answer = 1
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
