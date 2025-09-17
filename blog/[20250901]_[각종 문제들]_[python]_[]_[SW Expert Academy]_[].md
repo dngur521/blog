@@ -404,6 +404,38 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4873. [파이썬 S/W 문제해결 기본] 4일차 - 반복문자 지우기
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQbpTaQfEDFAVT&categoryId=AWTQbpTaQfEDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    
+    # 문자열 입력받기
+    str = input()
+    # 빈 스택 초기화
+    stack = []
+
+    # 문자열의 각 문자 차례대로 순회
+    for char in str:
+        # 스택이 비어있거나 현재 문자가 스택의 최상위 문자랑 다르다면
+        # 스택에 현재 문자 추가
+        if len(stack) == 0 or char != stack[-1]:
+            stack.append(char)
+
+        # 현재 문자와 스택의 최상위 문자가 같다면
+        # 스택의 최상위 문자 pop
+        elif char == stack[-1]:
+            stack.pop()
+
+    # 정답은 스택의 길이와 동일(== 남겨진 문자열의 길이)
+    answer = len(stack)
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
