@@ -436,6 +436,67 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4874. [파이썬 S/W 문제해결 기본] 5일차 - Forth
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQc1MKQiIDFAVT&categoryId=AWTQc1MKQiIDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&)
+```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    error_flag = False
+    answer = 0
+    # 후위 연산식 list로 입력받기
+    str_list = input().split()
+
+    # 빈 스택 초기화
+    stack = []
+
+    # 연산식의 연산자 하나씩 순회
+    for oper in str_list:
+        # 연산자가 .이면 연산이 끝났다는 의미이므로 break
+        if oper == '.':
+            break
+        # 연산자가 숫자(==피연산자)면 stack에 추가
+        if oper.isdigit():
+            stack.append(int(oper))
+        # 연산자가 연산자일때의 각각 처리 (+, -, *, /)
+        elif oper in '+-*/':
+            # 연산을 하려는데 stack에 있는 숫자가 2개 미만이면
+            # 제대로 된 식이 아니므로
+            # error 플래그를 True로 설정하고 break
+            if len(stack) < 2:
+                error_flag = True
+                break
+            # 피연산자 2개 스택에서 pop 해서 
+            # 실제 연산 처리
+            oper2 = stack.pop()
+            oper1 = stack.pop()
+
+            if oper == '+':
+                stack.append(oper1 + oper2)
+            elif oper == '-':
+                stack.append(oper1 - oper2)
+            elif oper == '*':
+                stack.append(oper1 * oper2)
+            elif oper == '/':
+                stack.append(oper1 // oper2)
+
+    # 순회를 다 돌고 난 다음에 혹시 있을 예외 상황 처리
+    # stack의 길이가 1 이상이면 정상적인 식이 아님
+    # or
+    # stack의 길이가 1이지만 입력받은 식의 맨 끝 글자가 '.'이 아니면 정상적인 식이 아님
+    if len(stack) > 1 or (len(stack) == 1 and str_list[-1] != '.'):
+        error_flag = True
+
+    # 최종 정답 출력
+    if not error_flag and len(stack) == 1:
+        answer = stack[0]
+        print(f"#{test_case} {answer}")
+    else:
+        # error_flag가 True인 경우 error 출력
+        print(f"#{test_case} error")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
