@@ -497,6 +497,65 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4875. [파이썬 S/W 문제해결 기본] 5일차 - 미로
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQeET6QlADFAVT&categoryId=AWTQeET6QlADFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=2&&&&&&&&&&)
+```python
+def dfs(x, y):
+    # 상하좌우 4가지 방향으로 이동하는 좌표 표현할때 쓸 list
+    # 예: (dx[3], dy[3]) = (0, 1) ==> 오른쪽으로 이동
+    # 즉 (x + dx[i], y + dy[i]) 처럼 이동하는 새로운 위치를 계산하기 유용함
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+
+    # 방문한 위치 표시
+    visited[x][y] = True
+
+    # 상, 하, 좌, 우로 이동
+    for dr in range(4):
+        nx = x + dx[dr]
+        ny = y + dy[dr]
+        # 이동할 때 미로 범위 벗어나지 않도록 조건 설정
+        if 0 <= nx < N and 0 <= ny < N and not visited[nx][ny]:
+            # 이동한 위치가 0(==통로)이면 dfs 재귀호출
+            if arr[nx][ny] == 0:
+                dfs(nx, ny)
+            # 이동한 위치가 3(==도착)이면 1 반환
+            elif arr[nx][ny] == 3:
+                global answer
+                answer = 1
+            # 이동한 위치가 1인 경우는 처리 안함
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    global visited, N, arr
+    answer = 0
+    x = 0
+    y = 0
+    # 미로의 크기 N 입력받기
+    N = int(input())
+    # 미로의 통로와 벽에 대한 정보 입력받기
+    # 0은 통로, 1은 벽, 2는 출발, 3은 도착
+    arr = [list(map(int, input().strip())) for _ in range(N)]
+
+    # 먼저 미로에서 출발점(숫자 2)의 위치 찾아서 출발 좌표 설정
+    for i in range(N):
+        for j in range(N):
+            if arr[i][j] == 2:
+                x = i
+                y = j
+    
+    # dfs에서 사용할 visited list 초기화 (N*N 크기)
+    visited = [[False] * N for _ in range(N)]
+
+    # 출발 좌표에서 dfs 함수 호출
+    dfs(x, y)
+    
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
