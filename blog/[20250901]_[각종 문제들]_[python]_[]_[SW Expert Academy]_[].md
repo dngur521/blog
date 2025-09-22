@@ -556,6 +556,63 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 4880. [파이썬 S/W 문제해결 기본] 5일차 - 토너먼트 카드게임
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQgnH6Qq4DFAVT&categoryId=AWTQgnH6Qq4DFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
+```python
+def find_winner(start, end, arr):
+    # 그룹에 학생이 한 명 뿐이라면, 그 학생이 해당 그룹의 승자가 됨
+    # 따라서 그 학생의 번호 반환
+    if start == end:
+        return start
+    
+    # 이분탐색을 위한 인덱스 설정 및 재귀호출
+    mid = (start + end) // 2
+    left_winner  = find_winner(start,   mid, arr)
+    right_winner = find_winner(mid + 1, end, arr)
+    
+    # 무승부일 경우 번호가 작은쪽(인덱스가 작은 쪽)을 승자로 함
+    if arr[left_winner] == arr[right_winner]:
+        return left_winner
+    # 가위(1)는 보(3)을 이김
+    if arr[left_winner] == 1 and arr[right_winner] == 3:
+        return left_winner
+    elif arr[left_winner] == 3 and arr[right_winner] == 1:
+        return right_winner
+    
+    # 바위(2)는 가위(1)를 이김
+    elif arr[left_winner] == 2 and arr[right_winner] == 1:
+        return left_winner
+    elif arr[left_winner] == 1 and arr[right_winner] == 2:
+        return right_winner
+    
+    # 보(3)는 바위(2)를 이김
+    elif arr[left_winner] == 3 and arr[right_winner] == 2:
+        return left_winner
+    elif arr[left_winner] == 2 and arr[right_winner] == 3:
+        return right_winner
+    
+    else:
+        return 0
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    answer = 0
+    # 인원 수 N 입력받기
+    N = int(input())
+
+    global arr
+    # N명이 고른 카드 입력받기
+    arr = list(map(int, input().split()))
+
+    # 정답 찾기
+    answer = find_winner(0, N - 1, arr)
+
+    # 정답 출력
+    print(f"#{test_case} {answer + 1}")
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
