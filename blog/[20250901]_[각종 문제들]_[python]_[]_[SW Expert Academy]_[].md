@@ -613,10 +613,51 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 4881. [파이썬 S/W 문제해결 기본] 5일차 - 배열 최소 합
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTQh00qQs0DFAVT&categoryId=AWTQh00qQs0DFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1&&&&&&&&&&)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    answer = 0
+    # N 및 N*N list 입력받기
+    N = int(input())
+    arr = []
+    for _ in range(N):
+        arr.append(list(map(int, input().split())))
 
+    min_sum = float('inf') # 최솟값을 찾기 위해 무한대로 초기화
+
+    # 백트래킹 사용
+    def find_min_sum(row, current_sum, used_cols):
+        global min_sum
+
+        # 현재까지의 합이 이미 최소 합보다 크거나 같으면 더 탐색할 필요 없음
+        # (가지치기)
+        if current_sum >= min_sum :
+            return
+        
+        # 모든 행을 다 탐색했으면 최솟값 갱신
+        if row == N:
+            min_sum = min(min_sum, current_sum)
+            return
+        
+        # 현재 행에서 각 열을 순회하며 숫자 선택
+        for col in range(N):
+            # 이전에 사용되지 않은 열인지 확인
+            if col not in used_cols:
+                # 사용된 열에 현재 열 추가
+                used_cols.add(col)
+                # 다음 행으로 재귀 호출
+                find_min_sum(row + 1, current_sum + arr[row][col], used_cols)
+                # 백트래킹: 다음 탐색을 위해 사용된 열에서 현재 열 제거
+                used_cols.remove(col)
+
+    # 함수 호출
+    find_min_sum(0, 0, set())
+        
+    # 정답 출력
+    print(f"#{test_case} {min_sum}")
 
 ```
 
