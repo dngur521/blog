@@ -661,6 +661,86 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 5102. [파이썬 S/W 문제해결 기본] 6일차 - 노드의 거리
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTVmxDKb1oDFAVT&categoryId=AWTVmxDKb1oDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
+```python
+from collections import deque
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    answer = 0
+    # V개의 노드 개수와 방향성이 없는 E개의 간선 정보 입력 받기
+    V, E = map(int, input().split())
+
+    # V+1 크기의 리스트 graph 만들기
+    graph = [[] for _ in range(V + 1)]
+
+    # E개의 줄에 걸쳐, 간선의 양쪽 노드 번호가 주어짐
+    for _ in range(E):
+        a, b = map(int, input().split())
+        # 입력받은 그래프 정보 저장하기
+        # 방향성이 없는 그래프이므로 양쪽 모두에 추가해주기
+        graph[a].append(b)
+        graph[b].append(a)
+
+    # E개의 줄 이후에는 출발 노드 S와 도착 노드 G가 주어짐
+    S, G = map(int, input().split())
+
+    # 큐 생성: 앞으로 방문할 노드들을 순서대로 저장하는 공간
+    queue = deque()
+
+    # 거리 배열 초기화: 출발 노드 S로부터 다른 모든 노드까지의 거리를 저장할 배열임
+    # -1은 아직 업데이트가 안된 초기값이라는 뜻
+    # e.g, distance[2] ==> 노드 S에서 노드 2까지의 거리
+    distance = [-1 for _ in range(V+1)]
+    # S에서 S까지의 거리는 0 (자기 자신)
+    distance[S] = 0
+
+    # BFS로 출발 노드 S에서 도착 노드 G까지의 최단 거리 계산
+
+    # 큐에 시작 노드 S 삽입
+    queue.append(S)
+    
+    # 큐가 비어있을 때까지 반복
+    while(queue):
+        # 큐에서 노드 하나 꺼내기
+        current_node = queue.popleft()
+
+        # 현재 노드가 도착 노드 G라면 distance[G]가 바로 정답. (탐색 종료)
+        if current_node == G:
+            answer = distance[G]
+            break
+        
+        # 현재 노드와 연결된 모든 이웃노드들 가져오기
+        neighboor_node = graph[current_node]
+        for node in neighboor_node:
+            # 만약 이웃 노드들을 아직 방문하지 않았다면
+            # 출발 노드 S에서 이웃 노드까지의 거리 업데이트 (현재 노드의 거리에서 1 더한 값)
+            if distance[node] == -1:
+                distance[node] = distance[current_node] + 1
+                # 거리가 업데이트 된 이웃 노드들을 큐에 추가 (다음에 탐색할 노드 추가)
+                queue.append(node)
+            # 이미 방문한 이웃 노드들은 위의 로직으로 거리가 업데이트가 되었기 때문에 따로 탐색 X
+    
+    # 만약 반복문이 끝났는데도 출발 노드 S에서 노드 G까지의 거리가 업데이트 되지 않았다면
+    # S에서 G로 가는 경로가 없다는 것임.
+    if distance[G] == -1:
+        answer = 0
+    
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+
+```
+
+# (문제 템플릿)
+[문제 링크]()
+```python
+
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
