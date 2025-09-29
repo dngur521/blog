@@ -734,10 +734,54 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 5177. [파이썬 S/W 문제해결 기본] 8일차 - 이진 힙
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTa1f7q4kIDFAVT&categoryId=AWTa1f7q4kIDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
 ```python
+# 부모 노드: (i / 2)에 바닥 함수 적용
+# 왼쪽 자식: 2i
+# 오른쪽 자식: 2i + 1
 
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    answer = 0
+    tree = [0] # 인덱스 번호를 1번부터 맞추기 위한 dummy값 초기화
+
+    # N: 입력받을 자연수의 갯수
+    N = int(input())
+
+    # N개의 자연수 입력받기
+    nums = list(map(int, input().split()))
+
+    for i in range(N):
+        # 새로운 값을 리스트의 맨 끝에 추가하기
+        tree.append(nums[i])
+        index = i + 1
+
+        # 맨 처음 삽입한 노드가 아닌경우
+        while index > 1:
+
+            # 현재 노드의 값과 부모 노드의 값 비교
+            # 만약 새 노드의 값이 부모 노드의 값보다 작다면,
+            # 두 노드의 값을 swap
+            # 이 과정을 노드가 root에 도달하거나 부모보다 값이 더 이상 작지 않을 때까지 반복
+            if tree[index] < tree[index//2] and not index == 1:
+                tree[index], tree[index//2] = tree[index//2], tree[index] 
+                # 교환 후, 인덱스는 부모 노드의 인덱스로 업데이트
+                index = index//2
+            else:
+                break
+    # print(tree)
+
+    # 마지막 노드의 조상 노드들에 저장된 정수의 합을 알아내기
+    last_node = tree[-1]
+    index = N
+    while index > 1:
+        answer += tree[index//2]
+        index = index//2
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
 
 ```
 
