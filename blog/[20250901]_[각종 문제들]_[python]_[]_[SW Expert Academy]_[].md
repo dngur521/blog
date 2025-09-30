@@ -785,6 +785,62 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 5174. [파이썬 S/W 문제해결 기본] 8일차 - subtree
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AWTay1Z64cQDFAVT&categoryId=AWTay1Z64cQDFAVT&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
+```python
+def count_nodes(adj, curr):
+    # 현재 노드 자신을 카운트
+    count = 1
+
+    # 자신의 자식들에 대해서 순회
+    # 리스트가 비어있다면 반복문이 실행되지 않으므로
+    # 별도의 if문 필요 없음.
+    for child_node in adj[curr]:
+
+        # 재귀 호출: 자식 노드가 루트인 서브트리의 갯수 계산
+        count_from_child_subtree = count_nodes(adj, child_node)
+
+        # 자식 서브트리의 갯수를 누적해서 더하기
+        count += count_from_child_subtree
+
+    # 최종 서브트리의 갯수 반환
+    return count
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    # E: 간선의 갯수, N: 루트가 될 노드
+    E, N = map(int, input().split())
+
+    # E개의 부모 자식 노드 번호 쌍 입력받기 
+    nums = list(map(int, input().split()))
+
+    # 인접 리스트 초기화
+    adj = [[] for _ in range(E + 2)]
+
+    # 인접 리스트에 트리 구조 구축
+    for i in range(0, E * 2, 2):
+        # 부모(p) - 자식(c) 쌍 인덱스
+        p = nums[i]
+        c = nums[i+1]
+        adj[p].append(c)
+
+    # 노드 N에 대해서 자식 노드들의 갯수 세기
+    answer = count_nodes(adj, N)
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+
+```
+
+# (문제 템플릿)
+[문제 링크]()
+```python
+
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
