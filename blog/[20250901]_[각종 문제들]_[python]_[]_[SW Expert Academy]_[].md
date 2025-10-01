@@ -834,9 +834,36 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 1204. [S/W 문제해결 기본] 1일차 - 최빈수 구하기
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV13zo1KAAACFAYh&categoryId=AV13zo1KAAACFAYh&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=5)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    # 테스트 케이스의 번호
+    t = int(input())
+
+    # 점수들 입력받기
+    nums = list(map(int, input().split()))
+
+    # 딕셔너리 초기화
+    num_dict = {}
+
+    # 점수들을 key로 하고 각 점수들의 등장 횟수를 value로 하는 딕셔너리 생성
+    for num in nums:
+        if num in num_dict:
+            num_dict[num] += 1
+        else:
+            num_dict[num] = 1
+    
+    # 빈도수(value) 내림차순, 만약에 빈도수가 같을 시 점수(key) 내림차순 정렬
+    temp = sorted(num_dict.items(), key=lambda item: (item[1], item[0]), reverse=True)
+
+    # 최종 정답은 첫번째 튜플의 점수(key)임
+    answer = temp[0][0]
+    
+    # 정답 출력
+    print(f"#{test_case} {answer}")
 
 
 ```
