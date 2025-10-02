@@ -868,6 +868,41 @@ for test_case in range(1, T + 1):
 
 ```
 
+# 1948. 날짜 계산기
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PnnU6AOsDFAUq&categoryId=AV5PnnU6AOsDFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=5)
+```python
+def get_days(month, day):
+    # 각 월이 시작되기 전 1월 1일부터의 누적 일 수 (0번 index가 1월, ~, 11번 index가 12월)
+    CUMULATIVE_DAYS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+
+    # 1월 1일부터 입력받은 날짜까지의 누적 일 수 계산해서 반환
+    return (CUMULATIVE_DAYS[month - 1] + day)
+
+# nums = list(map(int, input().split()))
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+
+    # 날짜들 입력받기
+    first_month, first_day, second_month, second_day = map(int, input().split())
+
+    # 최종 정답은 (1월1일 ~ 두번째로 입력받은 날짜까지의 누적 일 수) - (1월1일 ~ 첫번째로 입력받은 날짜까지의 누적 일 수) + 1
+    # 1을 더하는 이유는 "두 번째 날짜가 첫 번째 날짜의 며칠째인지 출력하는 프로그램을 작성하라." 라는 곳에 있음. 핵심은 "며칠째"
+    answer = get_days(second_month, second_day) - get_days(first_month, first_day) + 1
+    
+    # 정답 출력
+    print(f"#{test_case} {answer}")
+
+```
+
+# (문제 템플릿)
+[문제 링크]()
+```python
+
+
+```
+
 # (문제 템플릿)
 [문제 링크]()
 ```python
