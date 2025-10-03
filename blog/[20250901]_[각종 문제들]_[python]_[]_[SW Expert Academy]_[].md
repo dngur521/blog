@@ -896,9 +896,27 @@ for test_case in range(1, T + 1):
 
 ```
 
-# (문제 템플릿)
-[문제 링크]()
+# 1966. 숫자를 정렬하자
+[문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PrmyKAWEDFAUq&categoryId=AV5PrmyKAWEDFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=4&&&&&&&&&&)
 ```python
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    answer = ''
+    # N 입력받기
+    N = int(input())
+
+    # 숫자들 입력받기
+    nums = list(map(int, input().split()))
+
+
+    nums.sort()
+
+    for num in nums:
+        answer += str(num) + ' '
+
+    # 정답 출력
+    print(f"#{test_case} {answer}")
 
 
 ```
